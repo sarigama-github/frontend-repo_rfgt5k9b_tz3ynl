@@ -1,26 +1,27 @@
-import { useState } from 'react'
+import React from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Projects from './components/Projects'
+import About from './components/About'
+import Contact from './components/Contact'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#E8DCC0] text-[#3B2F2F]">
+      <Navbar />
+      <Hero />
+      <main className="relative">
+        <div className="absolute inset-0 opacity-[0.06] pointer-events-none" style={{backgroundImage:'url(https://grainy-gradients.vercel.app/noise.svg)'}}></div>
+        <Projects />
+        <About />
+        <Contact />
+        <footer className="bg-[#3B2F2F] text-[#E8DCC0] py-6 border-t-4 border-[#E8DCC0]">
+          <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
+            <span className="font-ui uppercase text-sm">© {new Date().getFullYear()} Brutal Web</span>
+            <a href="#home" className="px-3 py-2 border-2 border-[#E8DCC0] hover:bg-[#E8DCC0] hover:text-[#3B2F2F] transition-colors uppercase text-sm">Haut de page</a>
+          </div>
+        </footer>
+      </main>
     </div>
   )
 }

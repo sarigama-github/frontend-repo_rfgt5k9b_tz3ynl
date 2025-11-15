@@ -4,17 +4,15 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --font-display: 'Staatliches', 'Bebas Neue', system-ui, sans-serif;
+    --font-ui: 'Chakra Petch', 'Inter', system-ui, sans-serif;
+    --font-deco: 'Zen Tokyo Zoo', cursive;
   }
 
   html {
-    font-family: var(--font-sans);
+    font-family: var(--font-ui);
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #E8DCC0;
   }
 
   body {
@@ -22,25 +20,48 @@
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
 @layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-ui { font-family: var(--font-ui); }
+  .font-deco { font-family: var(--font-deco); }
+
   .animate-in {
     animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
+    animation-duration: 260ms;
+    animation-timing-function: cubic-bezier(0.2, 0.9, 0.1, 1);
   }
 
   .animate-out {
     animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
+    animation-duration: 200ms;
+    animation-timing-function: steps(3, end);
   }
+
+  .flicker {
+    animation: flicker 2.4s infinite steps(20, end);
+  }
+
+  .blink {
+    animation: blink 1.2s infinite steps(2, end);
+  }
+}
+
+@keyframes animateIn {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes animateOut {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-12px); }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.6; }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.1; }
 }
